@@ -24,3 +24,13 @@ test('Não deve renderizar uma lista de links para a página inicial', () => {
   const linkExtrado = screen.queryByText('Extrato');
   expect(linkExtrado).not.toBeInTheDocument();
 });
+
+
+test('Deve renderizar uma lista de link com a classe link', () => {
+  render(<Menu />);
+
+  const links = screen.getAllByRole('link');
+
+  links.forEach((link) => expect(link).toHaveClass('link'));
+  expect(links).toMatchSnapshot();
+})
